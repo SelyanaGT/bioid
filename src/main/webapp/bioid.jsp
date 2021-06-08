@@ -53,11 +53,11 @@
                                         <i class="fa fa-question-circle-o text-info"></i>
                                     </a>
                                 </div>
-                                <div class="custom-control custom-radio my-1">
-                                    <input type="radio" class="custom-control-input" name="operation" id="verification" value="verify" checked>
-                                    <label class="custom-control-label" for="verification">Login Verification</label>
-                                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover focus" title="Biometric verification" data-html="false"
-                                       data-content="For verification you upload one or more face images. Our service compares features of the samples with your biometric template to recognize you. You must be enrolled first - otherwise you'll encounter an error message.">
+                                  <div class="custom-control custom-radio my-1">
+                                    <input type="radio" class="custom-control-input" name="operation" id="identification" value="identify">
+                                    <label class="custom-control-label" for="identification">Identification</label>
+                                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover focus" title="Biometric identification" data-html="false"
+                                       data-content="For identification, all uploaded face images are compared with all biometric templates enrolled into the system. Results should list your BioID profile first. You must be enrolled first – otherwise you can't be recognized.">
                                         <i class="fa fa-question-circle-o text-info"></i>
                                     </a>
                                 </div>
