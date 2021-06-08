@@ -2,6 +2,7 @@ package com.gamatech.bioid.servlet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
  
 import org.bson.Document;
 
@@ -62,10 +63,35 @@ public class Util {
         return user_found;
     }
     
-    //Method to register a user in the mongodb
-    public static void registerUserInDB(String email, String password) {
-    	
+    public static boolean searchUserInDbByID(int classid) {
     	boolean user_found = false;
+    	 
+        // Get the mongodb connection
+        MongoDatabase db = getConnection().getDatabase(DB_NAME);
+ 
+        // Get the mongodb collection.
+        MongoCollection col = db.getCollection(DB_COLLECTION_NAME);
+ 
+        // Get the particular record from the mongodb collection   
+        List obj = new ArrayList();
+        obj.add(new BasicDBObject("classid",classid));
+ 
+        // Form a where query
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("$and", obj);
+        System.out.println("Sql query is?= " + whereQuery.toString());
+ 
+        FindIterable<Document> cursor = col.find(whereQuery);
+        for(Document doc : cursor) {
+            System.out.println("Found?= " + doc);
+            user_found = true;
+        }
+        
+        return user_found;
+    }
+    
+    //Method to register a user in the mongodb
+    public static void registerUserInDB(String email, String password, int classid) {
  
         // Get the mongodb connection
         MongoDatabase db = getConnection().getDatabase(DB_NAME);
@@ -78,9 +104,19 @@ public class Util {
         
         userDocument.append("email", email);
         userDocument.append("pass", password);
+        userDocument.append("classid", classid);
         
-        col.insertOne(userDocument);
-       
+        col.insertOne(userDocument);       
     	
     }
+    
+    //Method to generate a random integer from 0 - 100
+    public static int generateRandomClassID() {
+    	
+    	Random random = new Random();
+    	int randomInteger = random.nextInt(100);    		
+    	
+    	return randomInteger;
+    }
+    
 }

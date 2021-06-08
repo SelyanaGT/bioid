@@ -26,7 +26,7 @@
 <div class="row justify-content-center">
     <div class="col mt-3">
         <div class="card" id="biometricOperationCard">
-            <form asp-controller="Home" asp-action="Uui" method="post" class="form-horizontal" role="form" id="uuiForm">
+            <form  method="post" class="form-horizontal" name="bioIDform" action="bioidServlet" id="bioIDform">
                 <h4 class="card-header text-white" style="background-color:#465c7b!important">
                     BioID Verification
                 </h4>

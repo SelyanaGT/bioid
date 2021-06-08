@@ -47,7 +47,7 @@
 				                <input
 				                  type="password"
 				                  id="password"
-				                  name="login_pwd"
+				                  name="password"
 				                  class="form-control"
 				                  placeholder="Create Password"
 				                />
